@@ -1,7 +1,9 @@
 {
   "compilerOptions": {
     "skipLibCheck": true,
-    "noEmitOnError": false
+    "noEmitOnError": false,
+    "outDir": "dist",
+    "rootDir": "src"
   },
   "files": [],
   "references": [

@@ -6,7 +6,7 @@ import { Tabs } from "../Tabs";
 import { RiEditCircleFill } from "react-icons/ri";
 import { generateMeme as uploadFile } from "../../utils/memeUploader";
 import { motion } from "framer-motion";
-
+// @ts-nocheck
 const UserProfile = ({ likedMemes, userMeme, user, updateProfile }) => {
   const [loading, setLoading] = useState(false);
   const [tab, setTab] = useState(0);

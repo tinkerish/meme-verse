@@ -14,7 +14,7 @@ const SpeechRecognitionComponent: FC<SpeechRecognitionComponentProps> = ({
   index,
 }) => {
   const [recordIcon, setRecordIcon] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [, setErrorMessage] = useState("");
   const recognitionRef = useRef<SpeechRecognition | null>(null);
   useEffect(() => {
     const SpeechRecognition =

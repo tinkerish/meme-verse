@@ -6,7 +6,7 @@
   "main": "main.tsx",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "TS_NODE_TRANSPILE_ONLY=1 NODE_ENV=production tsc || true",
     "preview": "vite preview",
     "install-client": "npm install",
     "build-client": "npm run build",

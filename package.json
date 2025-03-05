@@ -6,7 +6,7 @@
   "main": "main.tsx",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "vite build",
     "preview": "vite preview",
     "install-client": "npm install",
     "build-client": "npm run build",

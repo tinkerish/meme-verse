@@ -38,27 +38,29 @@ const useMemeStore = create<MemeStore>()(
       fetchAndMergeMemes: async () => {
         const storedMemes = get().memes;
         const response = await fetch("https://api.imgflip.com/get_memes");
-        const fetchedMemes: Meme[] = await response.json();
+        const fetchedMemes = await response.json();
 
         let lastTimestamp = storedMemes.length
           ? storedMemes[0].timestamp
           : Date.now();
-        const updatedMemes: Meme[] = fetchedMemes.data.memes.map((meme) => {
-          const existingMeme = storedMemes.find((m) => m.id === meme.id);
-          const currTimeStamp = lastTimestamp + 24 * 60 * 60 * 1000;
-          lastTimestamp = currTimeStamp;
-          return {
-            id: meme.id,
-            name: meme.name,
-            url: meme.url,
-            timestamp: existingMeme?.timestamp || currTimeStamp,
-            likes: existingMeme?.likes || Math.floor(Math.random() * 100 + 1),
-            comments: existingMeme ? [...existingMeme.comments] : [],
-            category:
-              existingMeme?.category ||
-              (Math.random() < 0.5 ? "New" : "Classic"),
-          };
-        });
+        const updatedMemes: Meme[] = fetchedMemes.data.memes.map(
+          (meme: Meme) => {
+            const existingMeme = storedMemes.find((m) => m.id === meme.id);
+            const currTimeStamp = lastTimestamp + 24 * 60 * 60 * 1000;
+            lastTimestamp = currTimeStamp;
+            return {
+              id: meme.id,
+              name: meme.name,
+              url: meme.url,
+              timestamp: existingMeme?.timestamp || currTimeStamp,
+              likes: existingMeme?.likes || Math.floor(Math.random() * 100 + 1),
+              comments: existingMeme ? [...existingMeme.comments] : [],
+              category:
+                existingMeme?.category ||
+                (Math.random() < 0.5 ? "New" : "Classic"),
+            };
+          }
+        );
         const sortedMemes = updatedMemes.sort(
           (a, b) => b.timestamp - a.timestamp
         );
@@ -96,13 +98,9 @@ const useMemeStore = create<MemeStore>()(
       },
       addLikes: (id) => {
         const storedMemes = get().mergedMemes;
-        const userMemes = get().userMemes;
-        const memes = get().memes;
         const likedMemes = get().likedMemes;
         const givenMemeIndex = storedMemes.findIndex((meme) => meme.id === id);
         const likedMemeIndex = likedMemes.findIndex((meme) => meme.id === id);
-        const userMemeIndex = userMemes.findIndex((meme) => meme.id === id);
-        const memeIndex = memes.findIndex((meme) => meme.id === id);
         if (givenMemeIndex !== -1) {
           const updatedMeme = {
             ...storedMemes[givenMemeIndex],
@@ -115,29 +113,10 @@ const useMemeStore = create<MemeStore>()(
             likedMemes.push(updatedMeme);
           }
         }
-
-        // if (userMemeIndex !== -1) {
-        //   const updatedMeme = userMemes[userMemeIndex];
-        //   updatedMeme.likes = updatedMeme.likes + 1;
-        //   const updatedMemes = userMemes;
-        //   updatedMemes.splice(userMemeIndex, 1, updatedMeme);
-        //   set({ userMemes: updatedMemes });
-        // }
-        // if (memeIndex !== -1) {
-        //   const updatedMeme = memes[memeIndex];
-        //   updatedMeme.likes = updatedMeme.likes + 1;
-        //   const updatedMemes = memes;
-        //   updatedMemes.splice(memeIndex, 1, updatedMeme);
-        //   set({ memes: updatedMemes });
-        // }
       },
       addComments: (id, comment) => {
         const storedMemes = get().mergedMemes;
-        const userMemes = get().userMemes;
-        const memes = get().memes;
         const givenMemeIndex = storedMemes.findIndex((meme) => meme.id === id);
-        const userMemeIndex = userMemes.findIndex((meme) => meme.id === id);
-        const memeIndex = memes.findIndex((meme) => meme.id === id);
         if (givenMemeIndex !== -1) {
           const updatedMeme = {
             ...storedMemes[givenMemeIndex],
@@ -147,21 +126,6 @@ const useMemeStore = create<MemeStore>()(
           updatedMemes.splice(givenMemeIndex, 1, updatedMeme);
           set({ mergedMemes: updatedMemes });
         }
-
-        // if (userMemeIndex !== -1) {
-        //   const updatedMeme = userMemes[userMemeIndex];
-        //   updatedMeme.comments.push(comment);
-        //   const updatedMemes = userMemes;
-        //   updatedMemes.splice(userMemeIndex, 1, updatedMeme);
-        //   set({ userMemes: updatedMemes });
-        // }
-        // if (memeIndex !== -1) {
-        //   const updatedMeme = memes[memeIndex];
-        //   updatedMeme.comments.push(comment);
-        //   const updatedMemes = memes;
-        //   updatedMemes.splice(memeIndex, 1, updatedMeme);
-        //   set({ memes: updatedMemes });
-        // }
       },
     }),
 

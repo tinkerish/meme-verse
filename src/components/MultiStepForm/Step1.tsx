@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import Select from "../Select";
 import Error from "../Error";
 import FileUploader from "../FileUploader";
 import CustomToggle from "../CustomToggle";
 import { ToggleType } from "../../types/common";
-import useMemeStore from "../../store/formStore";
+import useMemeStore, { Meme } from "../../store/formStore";
 import { v4 as uuid } from "uuid";
 import { generateAiMeme, generateMeme } from "../../utils/memeUploader";
 import { Loader } from "../Loader";
@@ -23,7 +23,10 @@ const CATEGORY_OPTIONS = [
 ];
 const MAX_SIZE = "5 MB";
 const FILE_TYPE = ["image/jpeg", "image/jpg", "image/png"];
-const Step1 = ({ handleMemeData }) => {
+interface MemeUploaderProps {
+  handleMemeData: (meme: Partial<Meme>) => void;
+}
+const Step1: FC<MemeUploaderProps> = ({ handleMemeData }) => {
   const [loading, setLoading] = useState(false);
   const [nameError, setNameError] = useState<undefined | string>();
   const [topTextError, setTopTextError] = useState<undefined | string>();
@@ -88,7 +91,7 @@ const Step1 = ({ handleMemeData }) => {
       name,
       likes: 0,
       comments: [],
-      category,
+      category: category as "New" | "Classic",
       url: "",
     };
     try {

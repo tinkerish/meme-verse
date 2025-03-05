@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import useMemeStore, { Meme } from "../../store/formStore";
+import useMemeStore from "../../store/formStore";
 import { useParams } from "react-router-dom";
 import { BsCalendar2DateFill, BsHeartFill, BsShareFill } from "react-icons/bs";
 import { FaComment } from "react-icons/fa";

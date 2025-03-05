@@ -1,12 +1,12 @@
 {
-  "name": "pinnata",
+  "name": "meme_assignment",
   "private": true,
   "version": "1.0.0",
   "type": "module",
   "main": "main.tsx",
   "scripts": {
     "dev": "vite",
-    "build": "TS_NODE_TRANSPILE_ONLY=1 NODE_ENV=production tsc || true",
+    "build": "tsc -b && vite build",
     "preview": "vite preview",
     "install-client": "npm install",
     "build-client": "npm run build",

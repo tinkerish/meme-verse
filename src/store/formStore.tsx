@@ -12,7 +12,7 @@ export interface Meme {
   category: "New" | "Classic";
 }
 
-interface MemeStore {
+export interface MemeStore {
   memes: Meme[];
   userMemes: Meme[];
   mergedMemes: Meme[];

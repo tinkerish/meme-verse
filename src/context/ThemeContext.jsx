@@ -1,12 +1,11 @@
 import { createContext, useState, useEffect, ReactNode } from "react";
 
-const defaultThemeContext= {
+const defaultThemeContext = {
   theme: "light",
   setTheme: () => {},
 };
 
-export const ThemeContext =
-  createContext<ThemeContextType>(defaultThemeContext);
+export const ThemeContext = createContext(defaultThemeContext);
 
 export const ThemeProvider = ({ children }) => {
   const getInitialTheme = () => {

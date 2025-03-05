@@ -3,10 +3,8 @@ import { Loader } from "../Loader";
 const MemeComponent = ({ data }) => {
   if (data.length === 0) {
     return (
-      <div className="min-h-[30vh] w-full flex justify-center">
-        <div className="">
-          <Loader />
-        </div>
+      <div className="min-h-[30vh] w-full flex justify-center items-center">
+        <div className="text-center text-xl text-white ">No Data Available</div>
       </div>
     );
   }

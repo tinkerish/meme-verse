@@ -1,6 +1,7 @@
 import { useCallback, useMemo, useState } from "react";
 import { Tabs } from "../components/Tabs.jsx";
-
+import EditComponent from "../components/MultiStepForm/index.jsx";
+import PreviewComponent from "../components/Preview/index.jsx";
 const AddMemePageComponent = () => {
   const [memeData, setMemeData] = useState();
   const [tab, setTab] = useState(0);

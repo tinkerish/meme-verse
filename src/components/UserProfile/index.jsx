@@ -94,7 +94,29 @@ const UserProfile = ({ likedMemes, userMeme, user, updateProfile }) => {
               type="text"
               name="name"
               value={user.name}
+              onChange={(e) => {
+                updateProfile({ [e.target.name]: e.target.value });
+              }}
               className="border p-2 w-full"
+              disabled={loading}
+            />
+          </motion.div>
+          <motion.div
+            className="w-full"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+          >
+            <label className="block mb-2 text-xl">Bio</label>
+            <textarea
+              name="bio"
+              value={user.bio}
+              onChange={(e) => {
+                updateProfile({ [e.target.name]: e.target.value });
+              }}
+              className={`border p-2 w-full ${
+                loading ? "cursor-not-allowed" : ""
+              }`}
               disabled={loading}
             />
           </motion.div>

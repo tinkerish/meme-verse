@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import useMemeStore from "../../store/formStore";
 const PopularRecipes = () => {
-  const carouselRef = useRef < HTMLDivElement > null;
+  const carouselRef = useRef(null);
   const { memes } = useMemeStore();
   const [dragConstraints, setDragConstraints] = useState(undefined);
 

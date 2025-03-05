@@ -1,10 +1,11 @@
 const CustomToggle = ({ onChange, value, type, size, label }) => {
+  console.log(type);
   switch (type) {
-    case type === "checkbox":
+    case "checkbox":
       return (
         <Checkbox onChange={onChange} value={value} size={size} label={label} />
       );
-    case type === "checkbox":
+    case "switch":
       return (
         <Switch onChange={onChange} value={value} size={size} label={label} />
       );

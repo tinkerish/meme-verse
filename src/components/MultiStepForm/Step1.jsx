@@ -126,7 +126,7 @@ const Step1 = ({ handleMemeData }) => {
             <CustomToggle
               value={aiBased}
               onChange={(value) => setAIBased(value)}
-              type={"switch"}
+              type="switch"
               size={1.5}
             />
           </div>

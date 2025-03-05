@@ -30,10 +30,8 @@ const Feature = () => {
   const themeContext = useContext(ThemeContext);
   const { theme } = themeContext;
   useEffect(() => {
-    const featureFoodsSpan =
-      document.querySelectorAll < HTMLElement > ".feature-food span";
-    const featureFoods =
-      document.querySelectorAll < HTMLElement > ".feature-food";
+    const featureFoodsSpan = document.querySelectorAll(".feature-food span");
+    const featureFoods = document.querySelectorAll(".feature-food");
     featureFoods.forEach((food) => {
       const yOffset = food.getAttribute("data-y-offset");
       console.log(yOffset);

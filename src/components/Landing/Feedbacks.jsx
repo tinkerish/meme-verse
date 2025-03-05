@@ -36,7 +36,7 @@ const feedbacks = [
 const Feedbacks = () => {
   useEffect(() => {
     const floatingContents =
-      document.querySelectorAll<HTMLElement>(".floating-content");
+      document.querySelectorAll(".floating-content");
     floatingContents.forEach((element) => {
       const duration = Math.random() * 2 + 2;
       const translateY = Math.random() * 10 + 5;

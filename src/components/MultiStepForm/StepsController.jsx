@@ -1,4 +1,3 @@
-import { Meme } from "../../store/formStore";
 import Step1 from "./Step1";
 
 const StepsController = ({ handleMemeData }) => {

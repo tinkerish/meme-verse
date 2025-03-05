@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "../styles/modal.css";
 import { createPortal } from "react-dom";
 import { focusTrapping } from "../utils/focusTrap";
@@ -31,7 +31,7 @@ interface ModalProps {
   escapable?: boolean;
   onSave?: () => void;
 }
-const Modal: FC<ModalProps> = ({
+const Modal = ({
   title,
   containerClassName,
   position = "center",
@@ -43,14 +43,14 @@ const Modal: FC<ModalProps> = ({
   onSave,
   children,
 }) => {
-  const [container, setContainer] = useState<Element | null>(null);
+  const [container, setContainer] = useState(null);
   const modalOverlayRef = useRef(null);
-  const modalRef = useRef<HTMLDivElement | null>(null);
+  const modalRef = useRef(null);
   useEffect(() => {
     if (containerClassName) {
       const container = document.querySelector(containerClassName);
       if (container) {
-        setContainer(container as HTMLElement);
+        setContainer(container);
       } else {
         console.error(
           `Container with class name ${containerClassName} not found`
@@ -61,8 +61,8 @@ const Modal: FC<ModalProps> = ({
   }, [containerClassName]);
   useEffect(() => {
     if (isOutsideClickable && container && show) {
-      const handleClick = (e: MouseEvent) => {
-        const target = e.target as Node;
+      const handleClick = (e) => {
+        const target = e.target;
         if (target?.parentNode === container) {
           onClose();
         }
@@ -75,7 +75,7 @@ const Modal: FC<ModalProps> = ({
   }, [isOutsideClickable, container, onClose, show]);
   useEffect(() => {
     if (escapable && show) {
-      const handleEscape = (e: KeyboardEvent) => {
+      const handleEscape = (e) => {
         if (e.key === "Escape") {
           onClose();
         }
@@ -86,7 +86,7 @@ const Modal: FC<ModalProps> = ({
       };
     }
   }, [escapable, onClose, show]);
-  const focusTrap = (e: KeyboardEvent) => {
+  const focusTrap = (e) => {
     if (!modalOverlayRef.current) return;
     focusTrapping(e, modalOverlayRef.current);
   };

@@ -5,8 +5,7 @@ import useMemeStore from "../../store/formStore";
 const PopularRecipes = () => {
   const carouselRef = useRef < HTMLDivElement > null;
   const { memes } = useMemeStore();
-  const [dragConstraints, setDragConstraints] =
-    (useState < DragConstraints) | (undefined > undefined);
+  const [dragConstraints, setDragConstraints] = useState(undefined);
 
   useEffect(() => {
     const updateConstraints = () => {

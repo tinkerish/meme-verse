@@ -1,7 +1,11 @@
 import axios from "axios";
 const UPLOAD_IMAGE_API = import.meta.env.VITE_UPLOAD_IMAGE_API;
 const GENERATE_IMAGE_API = import.meta.env.VITE_GENERATE_IMAGE_API;
-export const generateAiMeme = async (templateId, text0, text1) => {
+export const generateAiMeme = async (
+  templateId: string,
+  text0: string,
+  text1: string
+) => {
   if (!templateId || !text0 || !text1) return;
   const resp = await axios.post(GENERATE_IMAGE_API, {
     templateId: templateId,
@@ -11,7 +15,7 @@ export const generateAiMeme = async (templateId, text0, text1) => {
   return resp.data.memeUrl;
 };
 
-export const generateMeme = async (file) => {
+export const generateMeme = async (file: File) => {
   if (!file) return;
   const formData = new FormData();
   formData.append("file", file);

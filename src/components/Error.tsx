@@ -1,6 +1,9 @@
+import { FC } from "react";
 import { BiSolidError } from "react-icons/bi";
-
-const Error = ({ errorMessage }) => {
+interface ErrorProps {
+  errorMessage: string;
+}
+const Error: FC<ErrorProps> = ({ errorMessage }) => {
   return (
     <div>
       <p className="flex text-red-700">

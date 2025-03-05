@@ -4,6 +4,7 @@ import MemeDetail from "../Memes/MemeDetails.tsx";
 export interface PreviewProps {
   id: string;
   ariaLabelledBy: string;
+  handleMemeData?: (meme: Partial<Meme>) => void;
   memeData?: Meme;
 }
 const Preview: FC<PreviewProps> = ({ memeData }) => {

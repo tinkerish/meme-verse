@@ -1,24 +1,7 @@
-import { FC, forwardRef, useImperativeHandle, useState } from "react";
+import { FC, useState } from "react";
 import fileUpload from "../assets/upload.png";
 import "../styles/fileUpload.css";
-import {
-  BsFiletypeGif,
-  BsFiletypeJpg,
-  BsFiletypeMp4,
-  BsFiletypePng,
-} from "react-icons/bs";
-import { FileMetaDataType, FileUploadType } from "../types/form";
-import { fileValidationError } from "../types/common";
-import { filterFileTypes } from "../utils/filterFileTypes";
-import { fileValidation } from "../utils/fileValidation";
-import Error from "./Error";
-const ICON_TYPE_MAPPER = {
-  [FileUploadType.JPEG]: <BsFiletypeJpg size={50} />,
-  [FileUploadType.JPG]: <BsFiletypeJpg size={50} />,
-  [FileUploadType.PNG]: <BsFiletypePng size={50} />,
-  [FileUploadType.GIF]: <BsFiletypeGif size={50} />,
-  [FileUploadType.MP4]: <BsFiletypeMp4 size={50} />,
-};
+
 interface FileUploaderProps {
   value?: File | string;
   allowedFileTypes: string[];
@@ -55,15 +38,6 @@ const FileUploader: FC<FileUploaderProps> = ({
   const handleDragEnter = () => {
     setIsDragZoneActive(true);
   };
-  // const handleRemoveFiles = (index?: number) => {
-  //   setErrors(null);
-  //   // if (Array.isArray(filePaths)) {
-  //   //   const newFilePaths = filePaths.filter((_, i) => i !== index);
-  //   //   setFilePaths(newFilePaths);
-  //   // } else {
-  //   //   setFilePaths([]);
-  //   // }
-  // };
   return (
     <div
       className={

@@ -1,9 +1,11 @@
 import { FC } from "react";
 import { TabComponent } from "../types/common";
+import { MultiStepFormProps } from "./MultiStepForm";
+import { PreviewProps } from "./Preview";
 interface TabsComponentProps {
   value: number;
   onChange: (value: number) => void;
-  tabs: TabComponent[];
+  tabs: TabComponent<MultiStepFormProps | PreviewProps>[];
   tabHeaderClassName?: string;
   tabClassName?: string;
   fullWidth?: boolean;

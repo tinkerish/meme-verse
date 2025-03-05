@@ -4,7 +4,8 @@ import { Meme } from "../../store/formStore";
 export interface MultiStepFormProps {
   id: string;
   ariaLabelledBy: string;
-  handleMemeData: (meme: Meme) => void;
+  handleMemeData: (meme: Partial<Meme>) => void;
+  memeData?: Meme;
 }
 const MultiStepForm: FC<MultiStepFormProps> = ({
   id,
